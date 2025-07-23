@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQUI TA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="logo" onclick="showHome()">AQUI TA</h1>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar negocios..." class="search-input">
+                    <button class="btn btn-primary btn-small" onclick="toggleAllCategories()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sliding Banner -->
+        <div class="sliding-banner">
+            <div id="bannerContent" class="banner-content">
+                <!-- Banner content will be generated here -->
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <div class="accordion" id="accordion">
+                    <!-- Comida y Víveres -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(0)">
+                            <h3>Comida y Víveres</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Supermercados')">Supermercados</button>
+                            <button class="sub-item" onclick="showCategory('Panaderías')">Panaderías</button>
+                            <button class="sub-item" onclick="showCategory('Abastos bodegas')">Abastos bodegas</button>
+                            <button class="sub-item" onclick="showCategory('Licorerias')">Licorerias</button>
+                        </div>
+                    </div>
+
+                    <!-- Comida Rápida -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(1)">
+                            <h3>Comida Rápida</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Hamburguesas')">Hamburguesas</button>
+                            <button class="sub-item" onclick="showCategory('Pizzas')">Pizzas</button>
+                            <button class="sub-item" onclick="showCategory('Comida a Domicilio')">Comida a Domicilio</button>
+                        </div>
+                    </div>
+
+                    <!-- Restaurantes -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(2)">
+                            <h3>Restaurantes</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Gourmet')">Gourmet</button>
+                            <button class="sub-item" onclick="showCategory('Familiares')">Familiares</button>
+                            <button class="sub-item" onclick="showCategory('China y otras partes del mundo')">China y otras partes del mundo</button>
+                        </div>
+                    </div>
+
+                    <!-- Autos -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(3)">
+                            <h3>Autos</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Repuestos')">Repuestos</button>
+                            <button class="sub-item" onclick="showCategory('Accesorios')">Accesorios</button>
+                            <button class="sub-item" onclick="showCategory('Talleres')">Talleres</button>
+                            <button class="sub-item" onclick="showCategory('Venta de Aceites')">Venta de Aceites</button>
+                            <button class="sub-item" onclick="showCategory('Grúas / fletes / camiones')">Grúas / fletes / camiones</button>
+                        </div>
+                    </div>
+
+                    <!-- Motopartes -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(4)">
+                            <h3>Motopartes</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Repuestos Moto')">Repuestos</button>
+                            <button class="sub-item" onclick="showCategory('Accesorios Moto')">Accesorios</button>
+                            <button class="sub-item" onclick="showCategory('Talleres Moto')">Talleres</button>
+                        </div>
+                    </div>
+
+                    <!-- Servicios -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(5)">
+                            <h3>Servicios</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Fibra / internet')">Fibra / internet</button>
+                            <button class="sub-item" onclick="showCategory('Refrigeración')">Refrigeración</button>
+                            <button class="sub-item" onclick="showCategory('Remodelación')">Remodelación</button>
+                            <button class="sub-item" onclick="showCategory('Cámaras de seguridad')">Cámaras de seguridad</button>
+                        </div>
+                    </div>
+
+                    <!-- Medicina -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(6)">
+                            <h3>Medicina</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Clínicas')">Clínicas</button>
+                            <button class="sub-item" onclick="showCategory('Hospitales - CDI')">Hospitales - CDI</button>
+                            <button class="sub-item" onclick="showCategory('Ambulancias')">Ambulancias</button>
+                            <button class="sub-item" onclick="showCategory('Farmacias')">Farmacias</button>
+                        </div>
+                    </div>
+
+                    <!-- Hospedaje -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(7)">
+                            <h3>Hospedaje</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Hoteles')">Hoteles</button>
+                            <button class="sub-item" onclick="showCategory('Posadas')">Posadas</button>
+                            <button class="sub-item" onclick="showCategory('Alquileres')">Alquileres</button>
+                        </div>
+                    </div>
+
+                    <!-- Empresas -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(8)">
+                            <h3>Empresas</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Mayoristas')">Mayoristas</button>
+                            <button class="sub-item" onclick="showCategory('Distribuidoras')">Distribuidoras</button>
+                            <button class="sub-item" onclick="showCategory('Almacenes')">Almacenes</button>
+                        </div>
+                    </div>
+
+                    <!-- Deliveris -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(9)">
+                            <h3>Deliveris</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <button class="sub-item" onclick="showCategory('Empresas Delivery')">Empresas</button>
+                            <button class="sub-item" onclick="showCategory('Sin empresas')">Sin empresas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <!-- Top Carousel -->
+                <div class="carousel-container top-carousel">
+                    <div class="carousel-track" id="topCarouselTrack">
+                        <!-- Top carousel cards will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Static Mega Menu Accordion -->
+                <div class="mega-menu-container">
+                    <div class="mega-menu-accordion">
+                        <!-- Comida y Víveres -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(0)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-shopping-cart mega-icon"></i>
+                                    <h3>Comida y Víveres</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Supermercados')">
+                                        <i class="fas fa-store"></i>
+                                        Supermercados
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Panaderías')">
+                                        <i class="fas fa-bread-slice"></i>
+                                        Panaderías
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Abastos bodegas')">
+                                        <i class="fas fa-warehouse"></i>
+                                        Abastos bodegas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Licorerias')">
+                                        <i class="fas fa-wine-bottle"></i>
+                                        Licorerias
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comida Rápida -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(1)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-hamburger mega-icon"></i>
+                                    <h3>Comida Rápida</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Hamburguesas')">
+                                        <i class="fas fa-hamburger"></i>
+                                        Hamburguesas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Pizzas')">
+                                        <i class="fas fa-pizza-slice"></i>
+                                        Pizzas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Comida a Domicilio')">
+                                        <i class="fas fa-motorcycle"></i>
+                                        Comida a Domicilio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Restaurantes -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(2)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-utensils mega-icon"></i>
+                                    <h3>Restaurantes</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Gourmet')">
+                                        <i class="fas fa-wine-glass"></i>
+                                        Gourmet
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Familiares')">
+                                        <i class="fas fa-users"></i>
+                                        Familiares
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('China y otras partes del mundo')">
+                                        <i class="fas fa-globe"></i>
+                                        China y otras partes del mundo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Autos -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(3)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-car mega-icon"></i>
+                                    <h3>Autos</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Repuestos')">
+                                        <i class="fas fa-cog"></i>
+                                        Repuestos
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Accesorios')">
+                                        <i class="fas fa-tools"></i>
+                                        Accesorios
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Talleres')">
+                                        <i class="fas fa-wrench"></i>
+                                        Talleres
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Venta de Aceites')">
+                                        <i class="fas fa-oil-can"></i>
+                                        Venta de Aceites
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Grúas / fletes / camiones')">
+                                        <i class="fas fa-truck"></i>
+                                        Grúas / fletes / camiones
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Motopartes -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(4)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-motorcycle mega-icon"></i>
+                                    <h3>Motopartes</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Repuestos Moto')">
+                                        <i class="fas fa-cog"></i>
+                                        Repuestos
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Accesorios Moto')">
+                                        <i class="fas fa-helmet-safety"></i>
+                                        Accesorios
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Talleres Moto')">
+                                        <i class="fas fa-wrench"></i>
+                                        Talleres
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicios -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(5)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-cogs mega-icon"></i>
+                                    <h3>Servicios</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Fibra / internet')">
+                                        <i class="fas fa-wifi"></i>
+                                        Fibra / internet
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Refrigeración')">
+                                        <i class="fas fa-snowflake"></i>
+                                        Refrigeración
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Remodelación')">
+                                        <i class="fas fa-hammer"></i>
+                                        Remodelación
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Cámaras de seguridad')">
+                                        <i class="fas fa-video"></i>
+                                        Cámaras de seguridad
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medicina -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(6)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-medkit mega-icon"></i>
+                                    <h3>Medicina</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Clínicas')">
+                                        <i class="fas fa-clinic-medical"></i>
+                                        Clínicas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Hospitales - CDI')">
+                                        <i class="fas fa-hospital"></i>
+                                        Hospitales - CDI
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Ambulancias')">
+                                        <i class="fas fa-ambulance"></i>
+                                        Ambulancias
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Farmacias')">
+                                        <i class="fas fa-pills"></i>
+                                        Farmacias
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hospedaje -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(7)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-bed mega-icon"></i>
+                                    <h3>Hospedaje</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Hoteles')">
+                                        <i class="fas fa-hotel"></i>
+                                        Hoteles
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Posadas')">
+                                        <i class="fas fa-home"></i>
+                                        Posadas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Alquileres')">
+                                        <i class="fas fa-key"></i>
+                                        Alquileres
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Empresas -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(8)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-building mega-icon"></i>
+                                    <h3>Empresas</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Mayoristas')">
+                                        <i class="fas fa-boxes"></i>
+                                        Mayoristas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Distribuidoras')">
+                                        <i class="fas fa-shipping-fast"></i>
+                                        Distribuidoras
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Almacenes')">
+                                        <i class="fas fa-warehouse"></i>
+                                        Almacenes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliveris -->
+                        <div class="mega-accordion-item">
+                            <div class="mega-accordion-header" onclick="toggleMegaAccordion(9)">
+                                <div class="mega-header-content">
+                                    <i class="fas fa-truck mega-icon"></i>
+                                    <h3>Deliveris</h3>
+                                </div>
+                                <i class="fas fa-chevron-down mega-chevron"></i>
+                            </div>
+                            <div class="mega-accordion-content">
+                                <div class="mega-subcategories">
+                                    <button class="mega-sub-item" onclick="showCategory('Empresas Delivery')">
+                                        <i class="fas fa-motorcycle"></i>
+                                        Empresas
+                                    </button>
+                                    <button class="mega-sub-item" onclick="showCategory('Sin empresas')">
+                                        <i class="fas fa-user"></i>
+                                        Sin empresas
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Carousel -->
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Carousel cards will be generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Page -->
+            <div id="category" class="page">
+                <div class="category-header">
+                    <button class="back-btn" onclick="showHome()">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </button>
+                    <h1 id="categoryTitle">Categoría</h1>
+                </div>
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Cards will be generated here -->
+                </div>
+            </div>
+
+            <!-- Search Results Page -->
+            <div id="searchResults" class="page">
+                <div class="category-header">
+                    <button class="back-btn" onclick="showHome()">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </button>
+                    <h1 id="searchTitle">Resultados de búsqueda</h1>
+                </div>
+                <div class="cards-grid" id="searchCardsGrid">
+                    <!-- Search results will be generated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
